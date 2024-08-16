@@ -1,39 +1,75 @@
 import {
-    Box,
-    Flex,
-    Avatar,
-    Text,
-    Button,
-    Menu,
-    MenuButton,
-    MenuList,
-    MenuItem,
-    MenuDivider,
-    useDisclosure,
-    useColorModeValue,
-    Stack,
-    useColorMode,
-    Center,
-  } from '@chakra-ui/react'
-  import { MoonIcon, SunIcon,SettingsIcon } from '@chakra-ui/icons'
-  import { FaCartShopping } from "react-icons/fa6";
+  Box,
+  Flex,
+  Avatar,
+  Text,
+  Button,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuGroup,
+  MenuDivider,
+  useDisclosure,
+  useColorModeValue,
+  Stack,
+  useColorMode,
+  Center
+} from '@chakra-ui/react'
+import { MoonIcon, SunIcon } from '@chakra-ui/icons'
+import { FaCartShopping } from "react-icons/fa6";
+import CartWidget from '../CartWidget/CartWidget';
 
 const NavBar = () => {
 
-    const { colorMode, toggleColorMode } = useColorMode()
+  const { colorMode, toggleColorMode } = useColorMode();
 
-    return (
-        <>
+  return (
+    <>
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
-        <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-          <Box>The Super Bus</Box>
+        <Flex h={20} alignItems={'center'} justifyContent={'space-between'}>
+          <Box> <Text as='b'
+            fontSize='3xl'>
+            The Super Bus
+          </Text>
+            <Menu>
+              <MenuButton as={Button} colorScheme='pink' ml={3} mb={2} variant='ghost'>
+                Inicio
+              </MenuButton>
+            </Menu>
+            <Menu>
+              <MenuButton as={Button} colorScheme='pink' ml={0} mb={2} variant='ghost'>
+                Rutas & Mapas
+              </MenuButton>
+              <MenuList>
+                <MenuItem>Rutas</MenuItem>
+                <MenuItem>Sitios de Interes</MenuItem>
+              </MenuList>
+            </Menu>
+            <Menu>
+              <MenuButton as={Button} colorScheme='pink' ml={0} mb={2} variant='ghost'>
+                Comprar Pasajes
+              </MenuButton>
+              <MenuList>
+                <MenuItem>Tours</MenuItem>
+                <MenuItem>Empresas</MenuItem>
+              </MenuList>
+            </Menu>
+            <Menu>
+              <MenuButton as={Button} colorScheme='pink' ml={3} mb={2} variant='ghost'>
+                Eventos
+              </MenuButton>
+            </Menu>
+            <Menu>
+              <MenuButton as={Button} colorScheme='pink' ml={3} mb={2} variant='ghost'>
+                Ayuda
+              </MenuButton>
+            </Menu>
+          </Box>
 
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={7}>
-              <Button onClick={toggleColorMode}>
-                {colorMode === 'light' ? <FaCartShopping /> : <SunIcon />}
-              </Button>
-
+              <CartWidget />
               <Menu>
                 <MenuButton
                   as={Button}
@@ -70,7 +106,7 @@ const NavBar = () => {
         </Flex>
       </Box>
     </>
-    )
-}
+  )
+};
 
-export default NavBar
+export default NavBar;
